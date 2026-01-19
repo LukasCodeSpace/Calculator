@@ -1,0 +1,22 @@
+# Qt build folders
+build/
+**/build/
+*.pro.user
+*.pro.user.*
+
+# CMake
+CMakeLists.txt.user
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+.ninja_log
+
+# Qt Creator
+*.autosave
+
+# OS
+.DS_Store
+Thumbs.db
+
+#VsCode
+.vscode/
