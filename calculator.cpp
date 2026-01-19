@@ -3,8 +3,7 @@
 #include <cmath>
 
 Calculator::Calculator(QWidget *parent)
-    :QMainWindow(parent)
-    ,ui(new Ui::Calculator)
+    :QMainWindow(parent),ui(new Ui::Calculator)
 {
     ui->setupUi(this);
 
@@ -26,6 +25,84 @@ Calculator::~Calculator()
     delete ui;
 }
 
+class inputLexer
+{
+    public:
+
+    inputLexer(const QString &userInput) : userInput(userInput), pos(0){}
+
+    void runLexer()
+    {
+
+        while(pos < userInput.length())
+        {
+            QChar currentInput = userInput[pos];
+
+            if(currentInput.isDigit() || currentInput == '.')
+            {
+                tokenizeNumber();
+            }
+            else if(currentInput == '+'){
+                tokens.push_back({TokenType::add});
+                pos++;
+            }
+            else if(currentInput == '-'){
+                tokens.push_back({TokenType::sub});
+                pos++;
+            }
+            else if(currentInput == '*' || currentInput == QChar(0x00D7)){
+                tokens.push_back({TokenType::mult});
+                pos++;
+            }
+            else if(currentInput == '/' || currentInput == QChar(0x00F7)){
+                tokens.push_back({TokenType::div});
+                pos++;
+            }
+            else if(currentInput == '('){
+                tokens.push_back({TokenType::leftPar});
+                pos++;
+            }
+            else if(currentInput == ')'){
+                tokens.push_back({TokenType::rightPar});
+                pos++;
+            }
+            else if(currentInput == '^'){
+                tokens.push_back({TokenType::pow});
+                pos++;
+            }
+            else if(currentInput == QChar(0x221A)){
+                tokens.push_back({TokenType::root});
+                pos++;
+            }
+            else if(currentInput == '='){
+                tokens.push_back({TokenType::equal});
+                pos++;
+            }
+            else {pos++;}
+        }
+    }
+
+    QVector<Token> tokens;
+
+    public:
+        QString userInput;
+        int pos;
+
+        void tokenizeNumber()
+        {
+            QString number;
+
+            while(pos < userInput.length() && (userInput[pos].isDigit() || userInput[pos] == '.'))
+            {
+                number += userInput[pos];
+                pos++;
+            }
+
+            double numberValue = number.toDouble();
+            tokens.push_back({TokenType::number, numberValue});
+
+        }
+};
 
 void Calculator::calculate(double value)
 {
@@ -154,6 +231,8 @@ void Calculator::on_btn_clear_clicked()
 
 void Calculator::on_btn_equal_clicked()
 {
+    inputLexer lexer(ui->displayOut->text());
+    lexer.runLexer();
     calculate(ui->displayIn->text().toDouble());
     newNumber = true;
     clearScndDisplay = true;

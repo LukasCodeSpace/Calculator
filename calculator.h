@@ -11,6 +11,14 @@ namespace Ui
 
 QT_END_NAMESPACE
 
+enum class TokenType {number, add, sub, mult, div, root, pow, rightPar, leftPar, equal, end};
+
+struct Token
+{
+    TokenType type;
+    double value;
+};
+
 class Calculator : public QMainWindow
 {
     Q_OBJECT
