@@ -14,4 +14,4 @@ The calculator works similar to the windows calculator.
 
 ## Development goals:
 - Rewrite the whole calculator function to support operator precedence  
-- Transform calculator into equations solver  
+- Transform calculator into an equation solver  
