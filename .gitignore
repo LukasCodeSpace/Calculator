@@ -19,5 +19,4 @@ cmake_install.cmake
 Thumbs.db
 
 #VsCode
-
 .vscode/
