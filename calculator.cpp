@@ -19,7 +19,6 @@ Calculator::Calculator(QWidget *parent)
     connect(ui->btn_9, &QPushButton::clicked,this, &Calculator::btnClicked);
 }
 
-
 Calculator::~Calculator()
 {
     delete ui;
@@ -100,7 +99,6 @@ class inputLexer
 
             double numberValue = number.toDouble();
             tokens.push_back({TokenType::number, numberValue});
-
         }
 };
 
@@ -111,7 +109,6 @@ void Calculator::calculate(double value)
         case Operators::add : currentValue += value; break;
         case Operators::sub : currentValue -= value; break;
         case Operators::mult : currentValue *= value; break;
-
         case Operators::div : if(value == 0)
         {
             ui->displayIn->setText("Error");
@@ -121,7 +118,6 @@ void Calculator::calculate(double value)
             return;
         }
         currentValue /= value; break;
-
         case Operators::root : currentValue = std::sqrt(currentValue); break;
         case Operators::pow : currentValue = std::pow(currentValue, value); break;
         case Operators::none : currentValue = value; break;
