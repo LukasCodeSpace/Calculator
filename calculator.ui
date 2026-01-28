@@ -6,20 +6,20 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>620</width>
-    <height>716</height>
+    <width>501</width>
+    <height>576</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>360</width>
-    <height>480</height>
+    <width>501</width>
+    <height>576</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>620</width>
-    <height>820</height>
+    <width>501</width>
+    <height>576</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -27,23 +27,23 @@
   </property>
   <property name="styleSheet">
    <string notr="true">QMainWindow{
-	background: #066369;
-	border: 2px solid  #27292b;
+        background: #066369;
+        border: 2px solid  #27292b;
 }
 
 QPushButton{
-	border: 2px solid #27292b;
-	border-radius: 5px;
-	color: #27292b;
-	background: #a8b2ba;
+        border: 2px solid #27292b;
+        border-radius: 5px;
+        color: #27292b;
+        background: #a8b2ba;
 }
 
 QPushButton:hover{
-	background: #979b9e;
+        background: #979b9e;
 }
 
 QPushButton:pressed{
-	background: #66bbc2;
+        background: #66bbc2;
 }
 </string>
   </property>
@@ -51,118 +51,19 @@ QPushButton:pressed{
    <property name="styleSheet">
     <string notr="true"/>
    </property>
-   <widget class="QLineEdit" name="displayOut">
-    <property name="geometry">
-     <rect>
-      <x>140</x>
-      <y>70</y>
-      <width>177</width>
-      <height>45</height>
-     </rect>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>0</width>
-      <height>45</height>
-     </size>
-    </property>
-    <property name="font">
-     <font>
-      <family>Comic Sans MS</family>
-      <pointsize>12</pointsize>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QLineEdit{
-	border: 2px solid #27292b;
-	border-radius: 5px;
-	padding: 0 8px;
-	color: #27292b;
-	background: #a8b2ba;
-	border-bottom: none;
-	border-bottom-right-radius: 0px;
-	border-bottom-left-radius: 0px;
-}
-
-QLineEdit:hover{
-	background-color: #979b9e;
-}</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="displayIn">
-    <property name="geometry">
-     <rect>
-      <x>130</x>
-      <y>130</y>
-      <width>228</width>
-      <height>45</height>
-     </rect>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>0</width>
-      <height>45</height>
-     </size>
-    </property>
-    <property name="font">
-     <font>
-      <family>Comic Sans MS</family>
-      <pointsize>16</pointsize>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="mouseTracking">
-     <bool>true</bool>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QLineEdit{
-	border: 2px solid #27292b;
-	border-radius: 5px;
-	padding: 0 8px;
-	color: #27292b;
-	background: #a8b2ba;
-	border-top: none;
-	border-top-right-radius: 0px;
-	border-top-left-radius: 0px;
-}
-
-QLineEdit:hover{
-	background-color: #979b9e;
-}</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="readOnly">
-     <bool>false</bool>
-    </property>
-   </widget>
    <widget class="QPushButton" name="btn_equal">
     <property name="geometry">
      <rect>
-      <x>510</x>
-      <y>400</y>
-      <width>60</width>
-      <height>45</height>
+      <x>390</x>
+      <y>409</y>
+      <width>80</width>
+      <height>131</height>
      </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>60</width>
-      <height>45</height>
-     </size>
     </property>
     <property name="font">
      <font>
-      <family>Comic Sans MS</family>
-      <pointsize>14</pointsize>
+      <family>Georgia</family>
+      <pointsize>16</pointsize>
       <bold>true</bold>
      </font>
     </property>
@@ -173,136 +74,19 @@ QLineEdit:hover{
      <string>=</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="btn_8">
-    <property name="geometry">
-     <rect>
-      <x>317</x>
-      <y>236</y>
-      <width>60</width>
-      <height>45</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>60</width>
-      <height>45</height>
-     </size>
-    </property>
-    <property name="font">
-     <font>
-      <family>Comic Sans MS</family>
-      <pointsize>14</pointsize>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true"/>
-    </property>
-    <property name="text">
-     <string>8</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btn_9">
-    <property name="geometry">
-     <rect>
-      <x>444</x>
-      <y>236</y>
-      <width>60</width>
-      <height>45</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>60</width>
-      <height>45</height>
-     </size>
-    </property>
-    <property name="font">
-     <font>
-      <family>Comic Sans MS</family>
-      <pointsize>14</pointsize>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true"/>
-    </property>
-    <property name="text">
-     <string>9</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btn_6">
-    <property name="geometry">
-     <rect>
-      <x>444</x>
-      <y>291</y>
-      <width>60</width>
-      <height>45</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>60</width>
-      <height>45</height>
-     </size>
-    </property>
-    <property name="font">
-     <font>
-      <family>Comic Sans MS</family>
-      <pointsize>14</pointsize>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true"/>
-    </property>
-    <property name="text">
-     <string>6</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="btn_dot">
     <property name="geometry">
      <rect>
-      <x>444</x>
-      <y>400</y>
-      <width>60</width>
-      <height>45</height>
+      <x>210</x>
+      <y>480</y>
+      <width>80</width>
+      <height>60</height>
      </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>60</width>
-      <height>45</height>
-     </size>
     </property>
     <property name="font">
      <font>
-      <family>Comic Sans MS</family>
-      <pointsize>14</pointsize>
+      <family>Georgia</family>
+      <pointsize>16</pointsize>
       <bold>true</bold>
      </font>
     </property>
@@ -313,66 +97,19 @@ QLineEdit:hover{
      <string>.</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="btn_5">
-    <property name="geometry">
-     <rect>
-      <x>317</x>
-      <y>291</y>
-      <width>60</width>
-      <height>45</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>60</width>
-      <height>45</height>
-     </size>
-    </property>
-    <property name="font">
-     <font>
-      <family>Comic Sans MS</family>
-      <pointsize>14</pointsize>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true"/>
-    </property>
-    <property name="text">
-     <string>5</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="btn_0">
     <property name="geometry">
      <rect>
-      <x>252</x>
-      <y>400</y>
-      <width>60</width>
-      <height>45</height>
+      <x>30</x>
+      <y>480</y>
+      <width>171</width>
+      <height>60</height>
      </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>60</width>
-      <height>45</height>
-     </size>
     </property>
     <property name="font">
      <font>
-      <family>Comic Sans MS</family>
-      <pointsize>14</pointsize>
+      <family>Georgia</family>
+      <pointsize>16</pointsize>
       <bold>true</bold>
      </font>
     </property>
@@ -383,31 +120,19 @@ QLineEdit:hover{
      <string>0</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="btn_root">
+   <widget class="QPushButton" name="btn_mult">
     <property name="geometry">
      <rect>
-      <x>317</x>
-      <y>182</y>
-      <width>60</width>
-      <height>45</height>
+      <x>300</x>
+      <y>340</y>
+      <width>80</width>
+      <height>60</height>
      </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>60</width>
-      <height>45</height>
-     </size>
     </property>
     <property name="font">
      <font>
-      <family>Comic Sans MS</family>
-      <pointsize>14</pointsize>
+      <family>Georgia</family>
+      <pointsize>16</pointsize>
       <bold>true</bold>
      </font>
     </property>
@@ -415,103 +140,21 @@ QLineEdit:hover{
      <string notr="true"/>
     </property>
     <property name="text">
-     <string>√</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btn_2">
-    <property name="geometry">
-     <rect>
-      <x>317</x>
-      <y>345</y>
-      <width>60</width>
-      <height>45</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>60</width>
-      <height>45</height>
-     </size>
-    </property>
-    <property name="font">
-     <font>
-      <family>Comic Sans MS</family>
-      <pointsize>14</pointsize>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true"/>
-    </property>
-    <property name="text">
-     <string>2</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btn_clear">
-    <property name="geometry">
-     <rect>
-      <x>444</x>
-      <y>182</y>
-      <width>60</width>
-      <height>45</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>60</width>
-      <height>45</height>
-     </size>
-    </property>
-    <property name="font">
-     <font>
-      <family>Comic Sans MS</family>
-      <pointsize>14</pointsize>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true"/>
-    </property>
-    <property name="text">
-     <string>C</string>
+     <string>×</string>
     </property>
    </widget>
    <widget class="QPushButton" name="btn_div">
     <property name="geometry">
      <rect>
-      <x>510</x>
-      <y>182</y>
-      <width>60</width>
-      <height>45</height>
+      <x>300</x>
+      <y>270</y>
+      <width>80</width>
+      <height>60</height>
      </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>60</width>
-      <height>45</height>
-     </size>
     </property>
     <property name="font">
      <font>
-      <family>Comic Sans MS</family>
+      <family>Georgia</family>
       <pointsize>16</pointsize>
       <bold>true</bold>
      </font>
@@ -523,31 +166,19 @@ QLineEdit:hover{
      <string>÷</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="btn_mult">
+   <widget class="QPushButton" name="btn_power">
     <property name="geometry">
      <rect>
-      <x>510</x>
-      <y>236</y>
-      <width>60</width>
-      <height>45</height>
+      <x>210</x>
+      <y>200</y>
+      <width>80</width>
+      <height>60</height>
      </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>60</width>
-      <height>45</height>
-     </size>
     </property>
     <property name="font">
      <font>
-      <family>Comic Sans MS</family>
-      <pointsize>14</pointsize>
+      <family>Georgia</family>
+      <pointsize>16</pointsize>
       <bold>true</bold>
      </font>
     </property>
@@ -555,34 +186,114 @@ QLineEdit:hover{
      <string notr="true"/>
     </property>
     <property name="text">
-     <string>×</string>
+     <string>x²</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_6">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>340</y>
+      <width>80</width>
+      <height>60</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Georgia</family>
+      <pointsize>16</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string>6</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_root">
+    <property name="geometry">
+     <rect>
+      <x>390</x>
+      <y>340</y>
+      <width>80</width>
+      <height>60</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Georgia</family>
+      <pointsize>16</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string>√</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_clear">
+    <property name="geometry">
+     <rect>
+      <x>390</x>
+      <y>270</y>
+      <width>80</width>
+      <height>60</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Georgia</family>
+      <pointsize>16</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string>C</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_add">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>480</y>
+      <width>80</width>
+      <height>60</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Georgia</family>
+      <pointsize>16</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string>+</string>
     </property>
    </widget>
    <widget class="QPushButton" name="btn_sub">
     <property name="geometry">
      <rect>
-      <x>510</x>
-      <y>291</y>
-      <width>60</width>
-      <height>45</height>
+      <x>300</x>
+      <y>410</y>
+      <width>80</width>
+      <height>60</height>
      </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>60</width>
-      <height>45</height>
-     </size>
     </property>
     <property name="font">
      <font>
-      <family>Comic Sans MS</family>
-      <pointsize>14</pointsize>
+      <family>Georgia</family>
+      <pointsize>16</pointsize>
       <bold>true</bold>
      </font>
     </property>
@@ -596,28 +307,16 @@ QLineEdit:hover{
    <widget class="QPushButton" name="btn_3">
     <property name="geometry">
      <rect>
-      <x>444</x>
-      <y>345</y>
-      <width>60</width>
-      <height>45</height>
+      <x>210</x>
+      <y>410</y>
+      <width>80</width>
+      <height>60</height>
      </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>60</width>
-      <height>45</height>
-     </size>
     </property>
     <property name="font">
      <font>
-      <family>Comic Sans MS</family>
-      <pointsize>14</pointsize>
+      <family>Georgia</family>
+      <pointsize>16</pointsize>
       <bold>true</bold>
      </font>
     </property>
@@ -628,31 +327,19 @@ QLineEdit:hover{
      <string>3</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="btn_7">
+   <widget class="QPushButton" name="btn_9">
     <property name="geometry">
      <rect>
-      <x>252</x>
-      <y>236</y>
-      <width>60</width>
-      <height>45</height>
+      <x>210</x>
+      <y>270</y>
+      <width>80</width>
+      <height>60</height>
      </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>60</width>
-      <height>45</height>
-     </size>
     </property>
     <property name="font">
      <font>
-      <family>Comic Sans MS</family>
-      <pointsize>14</pointsize>
+      <family>Georgia</family>
+      <pointsize>16</pointsize>
       <bold>true</bold>
      </font>
     </property>
@@ -660,34 +347,64 @@ QLineEdit:hover{
      <string notr="true"/>
     </property>
     <property name="text">
-     <string>7</string>
+     <string>9</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="displayIn">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>110</y>
+      <width>441</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Georgia</family>
+      <pointsize>14</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="mouseTracking">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit{
+        border: 2px solid #27292b;
+        border-radius: 5px;
+        padding: 0 8px;
+        color: #27292b;
+        background: #a8b2ba;
+        border-top: none;
+        border-top-right-radius: 0px;
+        border-top-left-radius: 0px;
+}
+
+QLineEdit:hover{
+        background-color: #979b9e;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="readOnly">
+     <bool>false</bool>
     </property>
    </widget>
    <widget class="QPushButton" name="btn_4">
     <property name="geometry">
      <rect>
-      <x>252</x>
-      <y>291</y>
-      <width>60</width>
-      <height>45</height>
+      <x>30</x>
+      <y>340</y>
+      <width>80</width>
+      <height>60</height>
      </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>60</width>
-      <height>45</height>
-     </size>
     </property>
     <property name="font">
      <font>
-      <family>Comic Sans MS</family>
-      <pointsize>14</pointsize>
+      <family>Georgia</family>
+      <pointsize>16</pointsize>
       <bold>true</bold>
      </font>
     </property>
@@ -698,31 +415,19 @@ QLineEdit:hover{
      <string>4</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="btn_add">
+   <widget class="QPushButton" name="btn_7">
     <property name="geometry">
      <rect>
-      <x>510</x>
-      <y>345</y>
-      <width>60</width>
-      <height>45</height>
+      <x>30</x>
+      <y>270</y>
+      <width>80</width>
+      <height>60</height>
      </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>60</width>
-      <height>45</height>
-     </size>
     </property>
     <property name="font">
      <font>
-      <family>Comic Sans MS</family>
-      <pointsize>14</pointsize>
+      <family>Georgia</family>
+      <pointsize>16</pointsize>
       <bold>true</bold>
      </font>
     </property>
@@ -730,69 +435,22 @@ QLineEdit:hover{
      <string notr="true"/>
     </property>
     <property name="text">
-     <string>+</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btn_power">
-    <property name="geometry">
-     <rect>
-      <x>252</x>
-      <y>182</y>
-      <width>60</width>
-      <height>45</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>60</width>
-      <height>45</height>
-     </size>
-    </property>
-    <property name="font">
-     <font>
-      <family>Comic Sans MS</family>
-      <pointsize>14</pointsize>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true"/>
-    </property>
-    <property name="text">
-     <string>x²</string>
+     <string>7</string>
     </property>
    </widget>
    <widget class="QPushButton" name="btn_1">
     <property name="geometry">
      <rect>
-      <x>252</x>
-      <y>345</y>
-      <width>60</width>
-      <height>45</height>
+      <x>30</x>
+      <y>410</y>
+      <width>80</width>
+      <height>60</height>
      </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>60</width>
-      <height>45</height>
-     </size>
     </property>
     <property name="font">
      <font>
-      <family>Comic Sans MS</family>
-      <pointsize>14</pointsize>
+      <family>Georgia</family>
+      <pointsize>16</pointsize>
       <bold>true</bold>
      </font>
     </property>
@@ -801,6 +459,178 @@ QLineEdit:hover{
     </property>
     <property name="text">
      <string>1</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_2">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>410</y>
+      <width>80</width>
+      <height>60</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Georgia</family>
+      <pointsize>16</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string>2</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_8">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>270</y>
+      <width>80</width>
+      <height>60</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Georgia</family>
+      <pointsize>16</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string>8</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_5">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>340</y>
+      <width>80</width>
+      <height>60</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Georgia</family>
+      <pointsize>16</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string>5</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="displayOut">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>20</y>
+      <width>441</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Georgia</family>
+      <pointsize>14</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit{
+        border: 2px solid #27292b;
+        border-radius: 5px;
+        padding: 0 8px;
+        color: #27292b;
+        background: #a8b2ba;
+        border-bottom: none;
+        border-bottom-right-radius: 0px;
+        border-bottom-left-radius: 0px;
+}
+
+QLineEdit:hover{
+        background-color: #979b9e;
+}</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_leftPar">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>200</y>
+      <width>80</width>
+      <height>60</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Georgia</family>
+      <pointsize>16</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string>(</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_rightPar">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>200</y>
+      <width>80</width>
+      <height>60</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Georgia</family>
+      <pointsize>16</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string>)</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_backspace">
+    <property name="geometry">
+     <rect>
+      <x>299</x>
+      <y>200</y>
+      <width>171</width>
+      <height>60</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Georgia</family>
+      <pointsize>16</pointsize>
+      <italic>false</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string>⌫</string>
     </property>
    </widget>
   </widget>

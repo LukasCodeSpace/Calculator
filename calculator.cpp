@@ -145,6 +145,11 @@ void Calculator::btnClicked()
     ui->displayOut->setText(ui->displayOut->text() + digit);
 }
 
+void Calculator::on_btn_backspace_clicked()
+{
+
+}
+
 void Calculator::on_btn_add_clicked()
 {
     calculate(ui->displayIn->text().toDouble());
@@ -192,7 +197,7 @@ void Calculator::on_btn_power_clicked()
 
 void Calculator::on_btn_root_clicked()
 {
-    if(!ui->displayOut->text().startsWith(QChar(0x221A)))
+    if(!ui->displayIn->text().contains(QChar(0x221A)))
     {
         calculate(ui->displayIn->text().toDouble());
         newNumber = true;
@@ -200,7 +205,6 @@ void Calculator::on_btn_root_clicked()
         pendingOp = Operators::root;
         ui->displayOut->setText(QChar(0x221A) + ui->displayOut->text());
     }
-
 }
 
 void Calculator::on_btn_dot_clicked()
@@ -209,6 +213,28 @@ void Calculator::on_btn_dot_clicked()
     {
         ui->displayIn->setText(ui->displayIn->text() + ".");
         ui->displayOut->setText(ui->displayOut->text() + ".");
+        newNumber = false;
+        clearScndDisplay = false;
+    }
+}
+
+void Calculator::on_btn_leftPar_clicked()
+{
+    if(!ui->displayIn->text().contains("("))
+    {
+        ui->displayIn->setText(ui->displayIn->text() + "(");
+        ui->displayOut->setText(ui->displayOut->text() + "(");
+        newNumber = false;
+        clearScndDisplay = false;
+    }
+}
+
+void Calculator::on_btn_rightPar_clicked()
+{
+    if(!ui->displayIn->text().contains(")"))
+    {
+        ui->displayIn->setText(ui->displayIn->text() + ")");
+        ui->displayOut->setText(ui->displayOut->text() + ")");
         newNumber = false;
         clearScndDisplay = false;
     }

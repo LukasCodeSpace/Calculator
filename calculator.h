@@ -39,6 +39,9 @@ private slots:
     void on_btn_root_clicked();
     void btnClicked();
     void calculate(double value);
+    void on_btn_rightPar_clicked();
+    void on_btn_leftPar_clicked();
+    void on_btn_backspace_clicked();
 
 private:
     Ui::Calculator *ui;
