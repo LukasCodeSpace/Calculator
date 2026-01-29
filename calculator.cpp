@@ -32,7 +32,6 @@ class inputLexer
 
     void runLexer()
     {
-
         while(pos < userInput.length())
         {
             QChar currentInput = userInput[pos];
@@ -147,7 +146,8 @@ void Calculator::btnClicked()
 
 void Calculator::on_btn_backspace_clicked()
 {
-
+    ui->displayIn->backspace();
+    ui->displayOut->backspace();
 }
 
 void Calculator::on_btn_add_clicked()
