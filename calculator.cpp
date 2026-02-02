@@ -2,267 +2,262 @@
 #include "./ui_calculator.h"
 #include <cmath>
 
+
+
 Calculator::Calculator(QWidget *parent)
     :QMainWindow(parent),ui(new Ui::Calculator)
 {
     ui->setupUi(this);
+    QPushButton* btnNumber[10] = {ui->btn_0, ui->btn_1, ui->btn_2, ui->btn_3, ui->btn_4, ui->btn_5, ui->btn_6, ui->btn_7, ui->btn_8, ui->btn_9};
+    QPushButton* btnOperator[4] = {ui->btn_add, ui->btn_sub, ui->btn_mult, ui->btn_div};
 
-    connect(ui->btn_0, &QPushButton::clicked,this, &Calculator::btnClicked);
-    connect(ui->btn_1, &QPushButton::clicked,this, &Calculator::btnClicked);
-    connect(ui->btn_2, &QPushButton::clicked,this, &Calculator::btnClicked);
-    connect(ui->btn_3, &QPushButton::clicked,this, &Calculator::btnClicked);
-    connect(ui->btn_4, &QPushButton::clicked,this, &Calculator::btnClicked);
-    connect(ui->btn_5, &QPushButton::clicked,this, &Calculator::btnClicked);
-    connect(ui->btn_6, &QPushButton::clicked,this, &Calculator::btnClicked);
-    connect(ui->btn_7, &QPushButton::clicked,this, &Calculator::btnClicked);
-    connect(ui->btn_8, &QPushButton::clicked,this, &Calculator::btnClicked);
-    connect(ui->btn_9, &QPushButton::clicked,this, &Calculator::btnClicked);
+    for(QPushButton* btnPressed : btnOperator)
+    {
+        connect(btnPressed, &QPushButton::clicked, this, &Calculator::btnOperatorClicked);
+    }
+
+
+    for(QPushButton* btnPressed : btnNumber)
+    {
+        connect(btnPressed, &QPushButton::clicked, this, &Calculator::btnNumberClicked);
+    }
 }
+
 
 Calculator::~Calculator()
 {
     delete ui;
 }
 
-class inputLexer
+
+//lexer
+QVector <Token> lexerTokens;
+QString userInput;
+int userInputPos;
+
+void tokenizeDigit()
 {
-    public:
+    QString numberString;
 
-    inputLexer(const QString &userInput) : userInput(userInput), pos(0){}
-
-    void runLexer()
+    while(userInputPos < userInput.length() && (userInput[userInputPos].isDigit() || userInput[userInputPos] == '.'))
     {
-        while(pos < userInput.length())
-        {
-            QChar currentInput = userInput[pos];
-
-            if(currentInput.isDigit() || currentInput == '.')
-            {
-                tokenizeNumber();
-            }
-            else if(currentInput == '+'){
-                tokens.push_back({TokenType::add});
-                pos++;
-            }
-            else if(currentInput == '-'){
-                tokens.push_back({TokenType::sub});
-                pos++;
-            }
-            else if(currentInput == '*' || currentInput == QChar(0x00D7)){
-                tokens.push_back({TokenType::mult});
-                pos++;
-            }
-            else if(currentInput == '/' || currentInput == QChar(0x00F7)){
-                tokens.push_back({TokenType::div});
-                pos++;
-            }
-            else if(currentInput == '('){
-                tokens.push_back({TokenType::leftPar});
-                pos++;
-            }
-            else if(currentInput == ')'){
-                tokens.push_back({TokenType::rightPar});
-                pos++;
-            }
-            else if(currentInput == '^'){
-                tokens.push_back({TokenType::pow});
-                pos++;
-            }
-            else if(currentInput == QChar(0x221A)){
-                tokens.push_back({TokenType::root});
-                pos++;
-            }
-            else if(currentInput == '='){
-                tokens.push_back({TokenType::equal});
-                pos++;
-            }
-            else {pos++;}
-        }
+        numberString += userInput[userInputPos++];
     }
 
-    QVector<Token> tokens;
-
-    public:
-        QString userInput;
-        int pos;
-
-        void tokenizeNumber()
-        {
-            QString number;
-
-            while(pos < userInput.length() && (userInput[pos].isDigit() || userInput[pos] == '.'))
-            {
-                number += userInput[pos];
-                pos++;
-            }
-
-            double numberValue = number.toDouble();
-            tokens.push_back({TokenType::number, numberValue});
-        }
-};
-
-void Calculator::calculate(double value)
-{
-    switch(pendingOp)
-    {
-        case Operators::add : currentValue += value; break;
-        case Operators::sub : currentValue -= value; break;
-        case Operators::mult : currentValue *= value; break;
-        case Operators::div : if(value == 0)
-        {
-            ui->displayIn->setText("Error");
-            ui->displayOut->setText("");
-            currentValue = 0;
-            pendingOp = Operators::none;
-            return;
-        }
-        currentValue /= value; break;
-        case Operators::root : currentValue = std::sqrt(currentValue); break;
-        case Operators::pow : currentValue = std::pow(currentValue, value); break;
-        case Operators::none : currentValue = value; break;
-    }
-        ui->displayIn->setText(QString::number(currentValue));
+    double inputNumber = numberString.toDouble();
+    lexerTokens.push_back({TokenType::number, inputNumber});
 }
 
-void Calculator::btnClicked()
-{
-    QPushButton *button = qobject_cast<QPushButton*>(sender());
 
-    if(newNumber)
+QVector <Token> runLexer()
+{
+    while(userInputPos < userInput.length())
     {
-        ui->displayIn->clear();
-        newNumber = false;
+        QChar currentInput = userInput[userInputPos];
+
+        if(currentInput.isSpace())
+        {
+            userInputPos++;
+            continue;
+        }
+
+        if(currentInput.isDigit() || currentInput == '.')
+        {
+            tokenizeDigit();
+            continue;
+        }
+
+        switch(currentInput.unicode())
+        {
+            case '+' : lexerTokens.push_back({TokenType::add}); break;
+            case '-' : lexerTokens.push_back({TokenType::sub}); break;
+            case '*' :
+            case 0x00D7 : lexerTokens.push_back({TokenType::mult}); break;
+            case '/' :
+            case 0x00F7 : lexerTokens.push_back({TokenType::div}); break;
+            case '^' : lexerTokens.push_back({TokenType::pow}); break;
+            case 0x221A : lexerTokens.push_back({TokenType::root}); break;
+            case '(' : lexerTokens.push_back({TokenType::leftPar}); break;
+            case ')' : lexerTokens.push_back({TokenType::rightPar}); break;
+            //case '=' : lexerTokens.push_back({TokenType::equal}); break;
+            default:
+                throw std::runtime_error("invalid character in lexerinput");
+        }
+        userInputPos++;
     }
+        lexerTokens.push_back({TokenType::end});
+        return lexerTokens;
+}
+
+//parser
+
+int parserTokensPos = 0;
+QVector<Token> parserTokens;
+double leftBindPow = 0.0;
+double rightBindPow = 0.0;
+
+Token& current()
+{
+    return parserTokens[parserTokensPos];
+}
+
+Token next()
+{
+    return parserTokens[parserTokensPos++];
+}
+
+void leftBinding(TokenType type)
+{
+    switch(type)
+    {
+        case TokenType::add:
+        case TokenType::sub: leftBindPow = 1.1; break;
+        case TokenType::mult:
+        case TokenType::div: leftBindPow = 2.1; break;
+        case TokenType::pow:
+        case TokenType::root: leftBindPow = 3.1; break;
+        default: leftBindPow = 0.0;
+        }
+}
+
+void rightBinding(TokenType type)
+{
+    switch(type)
+    {
+        case TokenType::add:
+        case TokenType::sub: rightBindPow = 1.0; break;
+        case TokenType::mult:
+        case TokenType::div: rightBindPow = 2.0; break;
+        case TokenType::pow: rightBindPow = 3.9; break;
+        case TokenType::root: rightBindPow = 3.0; break;
+        default: rightBindPow = 0.0;
+    }
+}
+
+void runParser()
+{
+
+
+}
+
+
+void Calculator::displayError(){
+    ui->displayInput->setText("Error! Invalid character input!");
+}
+
+void Calculator::btnNumberClicked()
+{
+    QPushButton *btnNumber = qobject_cast<QPushButton*>(sender());
+
 
     if(clearScndDisplay)
     {
-        ui->displayOut->clear();
+        ui->displayInput->clear();
     }
+    opPressed = false;
     clearScndDisplay = false;
-    QString digit = button->text();
-    ui->displayIn->setText(ui->displayIn->text() + digit);
-    ui->displayOut->setText(ui->displayOut->text() + digit);
+    QString displayNumber = btnNumber->text();
+    ui->displayInput->setText(ui->displayInput->text() + displayNumber);
+}
+
+void Calculator::btnOperatorClicked()
+{
+    if(!opPressed)
+    {
+        QPushButton *btnOperator = qobject_cast<QPushButton*>(sender());
+        QString displayOperator = btnOperator->text();
+        ui->displayInput->setText(ui->displayInput->text() + displayOperator);
+    }
+    opPressed = true;
+    clearScndDisplay = false;
+    dotUsed = false;
 }
 
 void Calculator::on_btn_backspace_clicked()
 {
-    ui->displayIn->backspace();
-    ui->displayOut->backspace();
+    ui->displayResult->backspace();
+    ui->displayInput->backspace();
 }
 
-void Calculator::on_btn_add_clicked()
+void Calculator::on_btn_pow_clicked()
 {
-    calculate(ui->displayIn->text().toDouble());
-    newNumber = true;
+    if(!opPressed)
+    {
+        ui->displayInput->setText(ui->displayInput->text() + "^");
+        opPressed = true;
+        dotUsed = false;
+    }
     clearScndDisplay = false;
-    pendingOp = Operators::add;
-    ui->displayOut->setText(ui->displayOut->text() + "+");
-}
-
-void Calculator::on_btn_sub_clicked()
-{
-    calculate(ui->displayIn->text().toDouble());
-    newNumber = true;
-    clearScndDisplay = false;
-    pendingOp = Operators::sub;
-    ui->displayOut->setText(ui->displayOut->text() + "-");
-}
-
-void Calculator::on_btn_mult_clicked()
-{
-    calculate(ui->displayIn->text().toDouble());
-    newNumber = true;
-    clearScndDisplay = false;
-    pendingOp = Operators::mult;
-    ui->displayOut->setText(ui->displayOut->text() + "×");
-}
-
-void Calculator::on_btn_div_clicked()
-{
-    calculate(ui->displayIn->text().toDouble());
-    newNumber = true;
-    clearScndDisplay = false;
-    pendingOp = Operators::div;
-    ui->displayOut->setText(ui->displayOut->text() + "÷");
-}
-
-void Calculator::on_btn_power_clicked()
-{
-    calculate(ui->displayIn->text().toDouble());
-    newNumber = true;
-    clearScndDisplay = false;
-    pendingOp = Operators::pow;
-    ui->displayOut->setText(ui->displayOut->text() + "^");
 }
 
 void Calculator::on_btn_root_clicked()
 {
-    if(!ui->displayIn->text().contains(QChar(0x221A)))
-    {
-        calculate(ui->displayIn->text().toDouble());
-        newNumber = true;
-        clearScndDisplay = false;
-        pendingOp = Operators::root;
-        ui->displayOut->setText(QChar(0x221A) + ui->displayOut->text());
-    }
+    ui->displayInput->setText(ui->displayInput->text() + "√(");
+     clearScndDisplay = false;
+    dotUsed = false;
+    opPressed = false;
+    openPar++;
 }
 
 void Calculator::on_btn_dot_clicked()
 {
-    if(!ui->displayIn->text().contains("."))
+    if(!dotUsed)
     {
-        ui->displayIn->setText(ui->displayIn->text() + ".");
-        ui->displayOut->setText(ui->displayOut->text() + ".");
-        newNumber = false;
+        ui->displayInput->setText(ui->displayInput->text() + ".");
         clearScndDisplay = false;
+        dotUsed = true;
     }
 }
 
 void Calculator::on_btn_leftPar_clicked()
 {
-    if(!ui->displayIn->text().contains("("))
-    {
-        ui->displayIn->setText(ui->displayIn->text() + "(");
-        ui->displayOut->setText(ui->displayOut->text() + "(");
-        newNumber = false;
+        ui->displayInput->setText(ui->displayInput->text() + "(");
         clearScndDisplay = false;
-    }
+        openPar++;
 }
 
 void Calculator::on_btn_rightPar_clicked()
 {
-    if(!ui->displayIn->text().contains(")"))
+    if(openPar > 0)
     {
-        ui->displayIn->setText(ui->displayIn->text() + ")");
-        ui->displayOut->setText(ui->displayOut->text() + ")");
-        newNumber = false;
+        ui->displayInput->setText(ui->displayInput->text() + ")");
         clearScndDisplay = false;
+        openPar--;
     }
 }
 
 void Calculator::on_btn_clear_clicked()
 {
-    ui->displayOut->setText("");
-    ui->displayIn->setText("");
-    currentValue = 0.0;
-    pendingOp = Operators::none;
-
-    newNumber = true;
+    ui->displayInput->setText("");
+    ui->displayResult->setText("");
     clearScndDisplay = false;
+    dotUsed = false;
+    openPar = 0;
 }
 
 void Calculator::on_btn_equal_clicked()
 {
-    inputLexer lexer(ui->displayOut->text());
-    lexer.runLexer();
-    calculate(ui->displayIn->text().toDouble());
-    newNumber = true;
-    clearScndDisplay = true;
-
-    if(!ui->displayOut->text().contains("="))
+    while(openPar > 0)
     {
-        ui->displayOut->setText(ui->displayOut->text() + "=");
+        ui->displayInput->setText(ui->displayInput->text() + ")");
+        openPar--;
     }
-    currentValue = 0.0;
-    pendingOp = Operators::none;
+
+    try
+    {
+        userInput = (ui->displayInput->text());
+        userInputPos = 0;
+        lexerTokens.clear();
+
+        QVector <Token> lexerOutput = runLexer();
+    }
+
+    catch(std::runtime_error)
+    {
+        displayError();
+    }
+
+    clearScndDisplay = true;
+    dotUsed = false;
+    openPar = 0;
 }

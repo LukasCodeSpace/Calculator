@@ -166,7 +166,7 @@ QPushButton:pressed{
      <string>÷</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="btn_power">
+   <widget class="QPushButton" name="btn_pow">
     <property name="geometry">
      <rect>
       <x>210</x>
@@ -350,7 +350,7 @@ QPushButton:pressed{
      <string>9</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="displayIn">
+   <widget class="QLineEdit" name="displayResult">
     <property name="geometry">
      <rect>
       <x>30</x>
@@ -530,7 +530,7 @@ QLineEdit:hover{
      <string>5</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="displayOut">
+   <widget class="QLineEdit" name="displayInput">
     <property name="geometry">
      <rect>
       <x>30</x>
