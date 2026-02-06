@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/AppIcon">
+        <file>assets/CalculatorIcon.png</file>
+    </qresource>
+</RCC>

@@ -12,8 +12,6 @@ namespace Ui
 
 QT_END_NAMESPACE
 
-
-
 enum class TokenType {number, add, sub, mult, div, root, pow, rightPar, leftPar, equal, end};
 
 struct Token
@@ -21,6 +19,8 @@ struct Token
     TokenType type;
     double value;
 };
+
+double calculate(double minBindPow);
 
 class Calculator : public QMainWindow
 {
