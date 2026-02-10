@@ -81,7 +81,7 @@ QVector <Token> runLexer()
             case ')' : lexerTokens.push_back({TokenType::rightPar}); break;
             //case '=' : lexerTokens.push_back({TokenType::equal}); break;
             default:
-                throw std::runtime_error("invalid character in lexerinput");
+                throw std::runtime_error("Error! Invalid character.");
         }
         userInputPos++;
     }
@@ -148,14 +148,14 @@ double parseTokenValue()
             double parValueReset = calculate(0.0);
             if(peek().type != TokenType::rightPar)
             {
-                throw std::runtime_error("Missing ')'");
+                throw std::runtime_error("Error! Missing ')'!");
             }
             next();
             return parValueReset;
         }
         case TokenType::root : return std::sqrt(calculate(3.5));
         case TokenType::sub : return -calculate(3.5);
-        default: throw std::runtime_error("invalid expression");
+        default: throw std::runtime_error("Error! Invalid expression.");
     }
 }
 
@@ -190,9 +190,9 @@ double calculate(double minBindPow)
             case TokenType::div :
                 if(rightSide == 0)
                 {
-                    throw std::runtime_error("dividing by zero is not defined");
+                    throw std::runtime_error("Error! Division by 0 is not defined.");
                 }
-            else { leftSide /= rightSide;} break;
+                else { leftSide /= rightSide;} break;
             case TokenType::pow : leftSide = std::pow(leftSide, rightSide); break;
             default:
                 return leftSide;
@@ -200,12 +200,6 @@ double calculate(double minBindPow)
     }
     return leftSide;
 }
-
-void Calculator::displayError()
-{
-    ui->displayInput->setText("Error! Invalid character input!");
-}
-
 
 //buttons
 
@@ -226,15 +220,31 @@ void Calculator::btnNumberClicked()
 
 void Calculator::btnOperatorClicked()
 {
-    if(!opPressed)
+    QPushButton *btnOperator = qobject_cast<QPushButton*>(sender());
+    QString displayOperator = btnOperator->text();
+
+    if(clearScndDisplay)
     {
-        QPushButton *btnOperator = qobject_cast<QPushButton*>(sender());
-        QString displayOperator = btnOperator->text();
-        ui->displayInput->setText(ui->displayInput->text() + displayOperator);
+        ui->displayInput->setText(ui->displayResult->text() + displayOperator);
+        ui->displayResult->clear();
+        opPressed = true;
+        clearScndDisplay = false;
+        dotUsed = false;
+        return;
     }
-    opPressed = true;
-    clearScndDisplay = false;
-    dotUsed = false;
+
+    if(ui->displayInput->text().isEmpty() && displayOperator == "-")
+    {
+        ui->displayInput->setText("-");
+        opPressed = true;
+    }
+
+    if(!opPressed && !ui->displayInput->text().isEmpty())
+    {
+        ui->displayInput->setText(ui->displayInput->text() + displayOperator);
+        opPressed = true;
+        dotUsed = false;
+    }
 }
 
 void Calculator::on_btn_backspace_clicked()
@@ -296,16 +306,21 @@ void Calculator::on_btn_clear_clicked()
     clearScndDisplay = false;
     dotUsed = false;
     openPar = 0;
+    opPressed = false;
 }
 
 void Calculator::on_btn_equal_clicked()
 {
+    if(ui->displayInput->text().isEmpty())
+    {
+        return;
+    }
+
     while(openPar > 0)
     {
         ui->displayInput->setText(ui->displayInput->text() + ")");
         openPar--;
     }
-
     try
     {
         userInput = (ui->displayInput->text());
@@ -318,12 +333,11 @@ void Calculator::on_btn_equal_clicked()
         double result = calculate(0.0);
         ui->displayResult->setText(QString::number(result));
     }
-
-    catch(std::runtime_error)
+    catch(std::runtime_error &except)
     {
-        displayError();
+        ui->displayInput->setText(QString(except.what()));
     }
-
+    opPressed = false;
     clearScndDisplay = true;
     dotUsed = false;
     openPar = 0;
