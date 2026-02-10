@@ -19,7 +19,6 @@ It works similar to the Windows calculator.
 
 ## Known Issues:
 - Window size is not adjustable
-- Error handling might be not working as intended
 
 ## Planned Improvments: 
 - Full keyboard support
