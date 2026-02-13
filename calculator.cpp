@@ -207,13 +207,13 @@ void Calculator::btnNumberClicked()
 {
     QPushButton *btnNumber = qobject_cast<QPushButton*>(sender());
 
-    if(clearScndDisplay)
+    if(clearDisplay)
     {
         ui->displayInput->clear();
         ui->displayResult->clear();
     }
     opPressed = false;
-    clearScndDisplay = false;
+    clearDisplay = false;
     QString displayNumber = btnNumber->text();
     ui->displayInput->setText(ui->displayInput->text() + displayNumber);
 }
@@ -223,12 +223,12 @@ void Calculator::btnOperatorClicked()
     QPushButton *btnOperator = qobject_cast<QPushButton*>(sender());
     QString displayOperator = btnOperator->text();
 
-    if(clearScndDisplay)
+    if(clearDisplay)
     {
         ui->displayInput->setText(ui->displayResult->text() + displayOperator);
         ui->displayResult->clear();
         opPressed = true;
-        clearScndDisplay = false;
+        clearDisplay = false;
         dotUsed = false;
         return;
     }
@@ -260,13 +260,13 @@ void Calculator::on_btn_pow_clicked()
         opPressed = true;
         dotUsed = false;
     }
-    clearScndDisplay = false;
+    clearDisplay = false;
 }
 
 void Calculator::on_btn_root_clicked()
 {
     ui->displayInput->setText(ui->displayInput->text() + "√(");
-    clearScndDisplay = false;
+    clearDisplay = false;
     dotUsed = false;
     opPressed = false;
     openPar++;
@@ -277,7 +277,7 @@ void Calculator::on_btn_dot_clicked()
     if(!dotUsed)
     {
         ui->displayInput->setText(ui->displayInput->text() + ".");
-        clearScndDisplay = false;
+        clearDisplay = false;
         dotUsed = true;
     }
 }
@@ -285,7 +285,7 @@ void Calculator::on_btn_dot_clicked()
 void Calculator::on_btn_leftPar_clicked()
 {
     ui->displayInput->setText(ui->displayInput->text() + "(");
-    clearScndDisplay = false;
+    clearDisplay = false;
     openPar++;
 }
 
@@ -294,7 +294,7 @@ void Calculator::on_btn_rightPar_clicked()
     if(openPar > 0)
     {
         ui->displayInput->setText(ui->displayInput->text() + ")");
-        clearScndDisplay = false;
+        clearDisplay = false;
         openPar--;
     }
 }
@@ -303,7 +303,7 @@ void Calculator::on_btn_clear_clicked()
 {
     ui->displayInput->setText("");
     ui->displayResult->setText("");
-    clearScndDisplay = false;
+    clearDisplay = false;
     dotUsed = false;
     openPar = 0;
     opPressed = false;
@@ -338,7 +338,7 @@ void Calculator::on_btn_equal_clicked()
         ui->displayInput->setText(QString(except.what()));
     }
     opPressed = false;
-    clearScndDisplay = true;
+    clearDisplay = true;
     dotUsed = false;
     openPar = 0;
 }

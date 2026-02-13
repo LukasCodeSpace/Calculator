@@ -45,8 +45,7 @@ private slots:
 
 private:
     Ui::Calculator *ui;
-    bool newNumber = true;
-    bool clearScndDisplay;
+    bool clearDisplay;
     bool dotUsed = false;
     bool opPressed = false;
     int openPar = 0;
