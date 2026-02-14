@@ -34,10 +34,12 @@ QVector <Token> lexerTokens;
 QString userInput;
 int userInputPos;
 
-void tokenizeDigit()
+void tokenizeNumber()
 {
     QString numberText;
 
+    //stores the value of the current input until the input length is reached
+    //only stores digits and dots
     while(userInputPos < userInput.length() && (userInput[userInputPos].isDigit() || userInput[userInputPos] == '.'))
     {
         numberText += userInput[userInputPos];
@@ -63,7 +65,7 @@ QVector <Token> runLexer()
 
         if(currentInput.isDigit() || currentInput == '.')
         {
-            tokenizeDigit();
+            tokenizeNumber();
             continue;
         }
 
